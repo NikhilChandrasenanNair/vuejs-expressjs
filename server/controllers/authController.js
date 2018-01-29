@@ -9,11 +9,8 @@ userController.home = (req, res) => {
 }
 
 userController.register = (req, res) => {
-  res.json('register')
-}
-
-userController.doRegister = function(req, res) {
-  User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
+  // res.json(`${req.body.email} Registered succesfully`)
+  User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
     if (err) {
       return res.render('register', { user : user });
     }
@@ -22,6 +19,18 @@ userController.doRegister = function(req, res) {
       res.redirect('/');
     });
   });
-};
+}
+
+// userController.doRegister = function(req, res) {
+//   User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
+//     if (err) {
+//       return res.render('register', { user : user });
+//     }
+//
+//     passport.authenticate('local')(req, res, function () {
+//       res.redirect('/');
+//     });
+//   });
+// };
 
 module.exports = userController;
