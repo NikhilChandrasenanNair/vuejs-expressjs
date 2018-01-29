@@ -1,23 +1,39 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <input
-      type="email"
-      name="email"
-      placeholder="email"
-      v-model="email" />
-    <br>
-    <input
-      type="password"
-      name="password"
-      placeholder="password"
-      v-model="password" />
-    <br>
-    <button
-      @click="register">
-      Register
-    </button>
-  </div>
+  <v-layout column>
+    <v-flex xs6 offset-xs3>
+      <div class="white elevation-2">
+        <v-toolbar flat dense color="orange" dark>
+          <v-toolbar-title class="white--text">Register</v-toolbar-title>
+        </v-toolbar>
+        <div class="pr-4 pl-4 pt-2 pb-2">
+          <v-text-field
+            label="Username"
+            type="text"
+            name="username"
+            v-model="username"
+            required
+            >
+          </v-text-field>
+          <br>
+          <v-text-field
+            label="Password"
+            type="password"
+            name="password"
+            v-model="password"
+            required
+            >
+          </v-text-field>
+          <br>
+          <div v-html="error" class="error" v-if="error"/>
+          <v-btn
+            outline color="orange"
+            @click="register">
+            Register
+          </v-btn>
+        </div>
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -25,16 +41,21 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      email: 'test@gmail.com',
-      password: ''
+      username: '',
+      password: '',
+      error: null
     }
   },
   methods: {
     async register () {
-      await AuthenticationService.register({
-        email: this.email,
-        password: this.password
-      })
+      try {
+        await AuthenticationService.register({
+          username: this.username,
+          password: this.password
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
@@ -42,5 +63,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.error {
+  color: red;
+}
 </style>
