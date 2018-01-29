@@ -12,11 +12,13 @@ userController.register = (req, res) => {
   // res.json(`${req.body.email} Registered succesfully`)
   User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
     if (err) {
-      return res.render('register', { user : user });
+      console.log('---------', err)
+      res.json(err.message)
+      //return res.render('register', { user : user });
     }
 
     passport.authenticate('local')(req, res, function () {
-      res.redirect('/');
+      res.redirect('/')
     });
   });
 }
