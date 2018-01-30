@@ -11,14 +11,22 @@ userController.home = (req, res) => {
 userController.register = (req, res) => {
   User.register(new User({ username : req.body.username }), req.body.password, (err, user) => {
     if (err) {
-      console.log('---------', err)
-      return res.json(err.message)
-      //return res.render('register', { user : user });
+      return res.render('register', { user : user });
     }
 
     passport.authenticate('local')(req, res, () => {
-      return res.redirect('/')
+      res.redirect('/')
     });
+  });
+}
+
+// userController.post('/login', passport.authenticate('local'), function(req, res) {
+//       res.redirect('/');
+//   });
+
+userController.login = (req, res) => {
+  passport.authenticate('local')(req, res, () => {
+    res.redirect('/')
   });
 }
 

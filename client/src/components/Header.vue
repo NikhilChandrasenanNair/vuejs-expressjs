@@ -1,6 +1,6 @@
 <template>
   <v-toolbar flat color="blue-grey" fixed>
-    <router-link to="HelloWorld">
+    <router-link to="/">
       <v-toolbar-title class="white--text mr4">TabTracker</v-toolbar-title>
     </router-link>
     <!-- <v-toolbar-items>
@@ -10,6 +10,11 @@
     </v-toolbar-items> -->
     <v-spacer></v-spacer>
     <v-toolbar-items>
+      <router-link to="login">
+        <v-btn flat dark>
+          Sign In
+        </v-btn>
+      </router-link>
         <router-link to="register">
           <v-btn flat dark>
             Sign Up
