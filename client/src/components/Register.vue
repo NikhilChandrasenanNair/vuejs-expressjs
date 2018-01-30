@@ -1,11 +1,11 @@
 <template>
   <v-layout column>
-    <v-flex xs6 offset-xs3>
-      <div class="white elevation-2">
-        <v-toolbar flat dense color="orange" dark>
+    <v-flex flex xs10 offset-xs1 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3>
+      <v-card class="white elevation-2">
+        <v-toolbar flat dense color="blue-grey" dark>
           <v-toolbar-title class="white--text">Register</v-toolbar-title>
         </v-toolbar>
-        <div class="pr-4 pl-4 pt-2 pb-2">
+        <div class="pr-4 pl-4 pt-2 pb-2" >
           <v-text-field
             label="Username"
             type="text"
@@ -26,12 +26,12 @@
           <br>
           <div v-html="error" class="error" v-if="error"/>
           <v-btn
-            outline color="orange"
+            outline color="blue-grey"
             @click="register">
             Register
           </v-btn>
         </div>
-      </div>
+      </v-card>
     </v-flex>
   </v-layout>
 </template>
