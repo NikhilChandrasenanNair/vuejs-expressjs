@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const passport =  require('passport')
-var User = require('../models/user')
+let User = require('../models/user')
 
-var userController = {};
+let userController = {};
 
 userController.home = (req, res) => {
   res.json('homepage')
@@ -10,8 +10,15 @@ userController.home = (req, res) => {
 
 userController.register = (req, res) => {
   User.register(new User({ username : req.body.username }), req.body.password, (err, user) => {
+
     if (err) {
-      return res.render('register', { user : user });
+        console.log(err.message);
+        return res.send(err);
+    } else {
+        res.send({
+            success: true,
+            user: user
+        });
     }
 
     passport.authenticate('local')(req, res, () => {
@@ -25,9 +32,29 @@ userController.register = (req, res) => {
 //   });
 
 userController.login = (req, res) => {
-  passport.authenticate('local')(req, res, () => {
-    res.redirect('/')
-  });
+  // passport.authenticate('local')(req, res, () => {
+  //   res.redirect('/')
+  // });
+  User.authenticate()(req.body.username, req.body.password, (err, user, options) => {
+    if (err) {
+      return next(err)
+    }
+    if(!user) {
+      res.send({
+        message: options.message,
+        success: false
+      })
+    }else {
+      req.login(user,  (err) => {
+        res.send({
+          success: true,
+          user: user
+        })
+      })
+    }
+  })
+
+
 }
 
 module.exports = userController;
