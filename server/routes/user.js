@@ -8,4 +8,5 @@ module.exports = (app) => {
   app.get('/', auth.home)
 
   app.post('/register', authPolicy.register, auth.register)
+  app.post('/login', auth.login)
 }
