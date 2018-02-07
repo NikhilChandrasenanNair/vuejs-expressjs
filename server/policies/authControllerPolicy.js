@@ -15,15 +15,15 @@ module.exports = {
             error: 'You must provide a valid username address'
           })
           break
-          case 'password':
-            res.status(400).send({
-              error: 'Password must be min of 8 and max of 32 characters length'
-            })
-            break
-          default:
+        case 'password':
           res.status(400).send({
-            error: 'Invalid registration information'
+            error: 'Password must be min of 8 and max of 32 characters length'
           })
+          break
+        default:
+        res.status(400).send({
+          error: 'Invalid registration information'
+        })
       }
     } else {
       next()

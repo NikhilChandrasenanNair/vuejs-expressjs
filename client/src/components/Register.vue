@@ -2,7 +2,7 @@
   <v-layout column>
     <v-flex flex xs10 offset-xs1 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3>
       <v-card class="white elevation-2">
-        <v-toolbar flat dense color="blue-grey" dark>
+        <v-toolbar flat dense color="deep-purple accent-3" dark>
           <v-toolbar-title class="white--text">Register</v-toolbar-title>
         </v-toolbar>
         <div class="pr-4 pl-4 pt-2 pb-2" >
@@ -24,9 +24,13 @@
             >
           </v-text-field>
           <br>
-          <div v-html="error" class="error" v-if="error"/>
+          <!-- <div v-html="error" class="error" v-if="error"/> -->
+          <div>
+            <v-alert outline color="error" v-html="error" :value="error">
+            </v-alert>
+          </div>
           <v-btn
-            outline color="blue-grey"
+            outline color="deep-purple accent-3"
             @click="register">
             Register
           </v-btn>
@@ -64,6 +68,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red;
+  color: white;
+}
+.error--text {  
+  padding: 8px !important;
 }
 </style>

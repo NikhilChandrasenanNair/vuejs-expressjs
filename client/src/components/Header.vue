@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar flat color="blue-grey" fixed>
+  <v-toolbar flat color="deep-purple accent-3" fixed>
     <router-link to="/">
       <v-toolbar-title class="white--text mr4">TabTracker</v-toolbar-title>
     </router-link>
@@ -11,15 +11,15 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <router-link to="login">
-        <v-btn flat dark>
+        <v-btn flat dark class="mt-3">
           Sign In
         </v-btn>
       </router-link>
-        <router-link to="register">
+        <!-- <router-link to="register">
           <v-btn flat dark>
             Sign Up
           </v-btn>
-        </router-link>
+        </router-link> -->
     </v-toolbar-items>
   </v-toolbar>
 </template>
