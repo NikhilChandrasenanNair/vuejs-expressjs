@@ -60,10 +60,11 @@ export default {
   methods: {
     async login () {
       try {
-        await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           username: this.username,
           password: this.password
         })
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         console.log('error-----', error)
         this.error = error.response.data.error

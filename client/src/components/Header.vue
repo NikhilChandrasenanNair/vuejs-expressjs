@@ -9,7 +9,7 @@
       </v-btn>
     </v-toolbar-items> -->
     <v-spacer></v-spacer>
-    <v-toolbar-items>
+    <v-toolbar-items v-if="!$store.state.isUserLoggedIn">
       <router-link to="login">
         <v-btn flat dark class="mt-3">
           Sign In
