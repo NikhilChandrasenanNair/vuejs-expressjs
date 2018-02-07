@@ -3,11 +3,13 @@
     <router-link to="/home">
       <v-toolbar-title class="white--text mr4">TabTracker</v-toolbar-title>
     </router-link>
-    <!-- <v-toolbar-items>
-      <v-btn flat dark>
-        Browse
-      </v-btn>
-    </v-toolbar-items> -->
+    <v-toolbar-items>
+      <router-link to="songs">
+        <v-btn flat dark class="mt-3">
+          Browse
+        </v-btn>
+      </router-link>
+    </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <router-link to="login" v-if="!$store.state.isUserLoggedIn">
