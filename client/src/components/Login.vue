@@ -2,7 +2,7 @@ Login<template>
   <v-layout column>
     <v-flex flex xs10 offset-xs1 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3>
       <v-card class="white elevation-2">
-        <v-toolbar flat dense color="deep-purple accent-3" dark>
+        <v-toolbar flat dense color="teal accent-4" dark>
           <v-toolbar-title class="white--text">Login</v-toolbar-title>
         </v-toolbar>
         <div class="pr-4 pl-4 pt-2 pb-2" >
@@ -26,14 +26,19 @@ Login<template>
           <br>
           <div v-html="error" class="error" v-if="error"/>
           <v-btn
-            outline color="deep-purple accent-3"
+            outline color="teal accent-4"
             @click="login">
             Login
           </v-btn>
           <br>
+          <div>
+            <v-alert outline color="error" v-html="error" :value="error">
+            </v-alert>
+          </div>
+          <br>
           <router-link to="register">
           <span class="pt-3 register pb-3">
-            <a color="deep-purple accent-3" >Create Account</a>
+            <a>Create Account</a>
           </span>
         </router-link>
         </div>
@@ -60,6 +65,7 @@ export default {
           password: this.password
         })
       } catch (error) {
+        console.log('error-----', error)
         this.error = error.response.data.error
       }
     }
@@ -77,6 +83,6 @@ export default {
   padding-left: 5px;
 }
 .register a {
-  color: #651fff!important
+  color: #00bfa5!important
 }
 </style>

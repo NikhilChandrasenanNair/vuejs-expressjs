@@ -27,25 +27,23 @@ userController.register = (req, res) => {
   });
 }
 
-// userController.post('/login', passport.authenticate('local'), function(req, res) {
-//       res.redirect('/');
-//   });
-
 userController.login = (req, res) => {
-  // passport.authenticate('local')(req, res, () => {
-  //   res.redirect('/')
-  // });
+
   User.authenticate()(req.body.username, req.body.password, (err, user, options) => {
     if (err) {
+      console.log('err---',err);
       return next(err)
     }
     if(!user) {
+      console.log('!user', options.message);
       res.send({
+        status: 403,
         message: options.message,
         success: false
       })
     }else {
       req.login(user,  (err) => {
+        console.log('user -- ',user);
         res.send({
           success: true,
           user: user

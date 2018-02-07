@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar flat color="deep-purple accent-3" fixed>
+  <v-toolbar flat color="teal accent-4" fixed>
     <router-link to="/">
       <v-toolbar-title class="white--text mr4">TabTracker</v-toolbar-title>
     </router-link>
