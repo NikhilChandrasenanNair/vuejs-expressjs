@@ -1,48 +1,43 @@
-Login<template>
+<template>
   <v-layout column>
     <v-flex flex xs10 offset-xs1 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3>
-      <v-card class="white elevation-2">
-        <v-toolbar flat dense color="teal accent-4" dark>
-          <v-toolbar-title class="white--text">Login</v-toolbar-title>
-        </v-toolbar>
-        <div class="pr-4 pl-4 pt-2 pb-2" >
-          <v-text-field
-            label="Username"
-            type="text"
-            name="username"
-            v-model="username"
-            required
-            >
-          </v-text-field>
-          <br>
-          <v-text-field
-            label="Password"
-            type="password"
-            name="password"
-            v-model="password"
-            required
-            >
-          </v-text-field>
-          <br>
-          <div v-html="error" class="error" v-if="error"/>
-          <v-btn
-            outline color="teal accent-4"
-            @click="login">
-            Login
-          </v-btn>
-          <br>
-          <div>
-            <v-alert outline color="error" v-html="error" :value="error">
-            </v-alert>
-          </div>
-          <br>
-          <router-link to="register">
-          <span class="pt-3 register pb-3">
-            <a>Create Account</a>
-          </span>
-        </router-link>
+      <panel :title="title">
+        <v-text-field
+          label="Username"
+          type="text"
+          name="username"
+          v-model="username"
+          required
+          >
+        </v-text-field>
+        <br>
+        <v-text-field
+          label="Password"
+          type="password"
+          name="password"
+          v-model="password"
+          required
+          >
+        </v-text-field>
+        <br>
+        <div v-html="error" class="error" v-if="error"/>
+        <v-btn
+          outline color="teal accent-4"
+          @click="login">
+          {{title}}
+        </v-btn>
+        <br>
+        <div>
+          <v-alert outline color="error" v-html="error" :value="error">
+          </v-alert>
         </div>
-      </v-card>
+        <br>
+        <router-link to="register">
+        <span class="pt-3 register pb-3">
+          <a>Create Account</a>
+        </span>
+      </router-link>
+    </panel>
     </v-flex>
   </v-layout>
 </template>
@@ -55,7 +50,8 @@ export default {
     return {
       username: '',
       password: '',
-      error: null
+      error: null,
+      title: 'Login'
     }
   },
   methods: {
