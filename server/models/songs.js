@@ -7,8 +7,7 @@ let SongSchema = new Schema({
 	genre:String,
 	album:String,
 	albumImageUrl:String,
-	youtubeId:String,
-	lyrics:String
+	youtubeId:String
 })
 
 module.exports = mongoose.model('Song', SongSchema)
